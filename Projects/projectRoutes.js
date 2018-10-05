@@ -38,6 +38,23 @@ router.get('/:id', (req,res)=>{
             return errorHelper(500, 'Server not found', res);
         });
 });
+
+router.get('/:id/projects', (req,res)=>{
+    const { id } = req.params;
+    projectDb
+    .getProjectActions(id)
+    .then(project => {
+        if(project){
+            res.status(200).json(project);
+        } else {
+            return errorHelper(404, 'no project with those actions ¯\_(ツ)_/¯', res);
+        }
+    })
+    .catch(err => {
+        return errorHelper(500, 'server not found', res);
+    });
+});
+
 // add project
 router.post('/', (req, res)=> {
     const {name, description} = req.body;
@@ -89,3 +106,4 @@ router.put('/:id', (req,res)=>{
 module.exports = router;
 // description
 // name
+
