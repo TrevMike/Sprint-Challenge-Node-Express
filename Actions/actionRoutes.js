@@ -29,7 +29,7 @@ router.get('/:id', (req, res)=>{
         .get(id)
         .then(action => {
             if(action) {
-                res.status(200),json(post);
+                res.status(200),json(action);
             } else {
                 return errorHelper(401,'what you are looking aint here with that id');
             }

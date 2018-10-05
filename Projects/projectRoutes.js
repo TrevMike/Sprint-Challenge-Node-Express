@@ -39,7 +39,7 @@ router.get('/:id', (req,res)=>{
         });
 });
 
-router.get('/:id/projects', (req,res)=>{
+router.get('/:id/project', (req,res)=>{
     const { id } = req.params;
     projectDb
     .getProjectActions(id)
